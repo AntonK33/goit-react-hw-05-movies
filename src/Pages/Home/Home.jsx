@@ -11,12 +11,12 @@ const Home = () => {
   useEffect(() => {
     onFetch()
       .then(response => {
-        if (response.length === 0) {
+        if (response.results.length === 0) {
           setStatus('rejected');
           return;
         }
+        setMovies(response.results);
         setStatus('resolved');
-        setMovies(response);
       })
       .catch(error => {
         setError(error);
